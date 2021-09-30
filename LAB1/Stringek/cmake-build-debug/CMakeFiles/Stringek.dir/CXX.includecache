@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/UNIVERSITY/MASODEV/ELSO FELEV/Fejlett programozasi technikak/Gyakorlatok/LAB1/Stringek/functions.h
+iostream
+-
+sstream
+-
+
+D:/UNIVERSITY/MASODEV/ELSO FELEV/Fejlett programozasi technikak/Gyakorlatok/LAB1/Stringek/main.cpp
+functions.h
+D:/UNIVERSITY/MASODEV/ELSO FELEV/Fejlett programozasi technikak/Gyakorlatok/LAB1/Stringek/functions.h
+iostream
+-
+sstream
+-
+

@@ -1,0 +1,3 @@
+D:/UNIVERSITY/MASODEV/ELSO FELEV/Fejlett programozasi technikak/Gyakorlatok/LAB1/Stringek/cmake-build-debug/CMakeFiles/Stringek.dir
+D:/UNIVERSITY/MASODEV/ELSO FELEV/Fejlett programozasi technikak/Gyakorlatok/LAB1/Stringek/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/UNIVERSITY/MASODEV/ELSO FELEV/Fejlett programozasi technikak/Gyakorlatok/LAB1/Stringek/cmake-build-debug/CMakeFiles/rebuild_cache.dir

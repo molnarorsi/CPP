@@ -4,6 +4,8 @@
 
 #include "List.h"
 
+using namespace std;
+
 
 List::List() {
     nodeCounter = 0;
@@ -39,13 +41,54 @@ bool List::empty() const {
 }
 
 void List::insertFirst(int d) {
+
     Node *p = new Node(d, first);
     first = p;
+    nodeCounter++;
 }
 
 int List::removeFirst() {
+    if(empty()) {
+        throw runtime_error("Error");
+    }
 
+    Node *p = first;
+    //auto n = first->value;
+    //delete first;
+    first = p->next;
+    nodeCounter--;
+    return p->value;
 }
+
+void List::remove(int d, DeleteFlag df) {
+    Node *p = first;
+
+    if( (p->value < d && df == DeleteFlag::LESS) || (p->value == d && df == DeleteFlag::EQUAL) || (p->value > d && df == DeleteFlag::GREATER) ){
+        removeFirst();
+        return;
+    }
+
+    for ( Node *x = first; x ; x = x->next) {
+
+        if( (x->value < d && df == DeleteFlag::LESS) || (x->value == d && df == DeleteFlag::EQUAL) || (x->value > d && df == DeleteFlag::GREATER) ) {
+            p->next = x->next;
+            return;
+        }
+        p = x;
+    }
+}
+
+void List::print() const {
+    Node *p = first;
+    while(p != nullptr) {
+        cout << p->value << '\t';
+        p = p->next;
+    }
+}
+
+
+
+
 
 
 

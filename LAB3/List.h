@@ -5,6 +5,10 @@
 #ifndef LAB3_LIST_H
 #define LAB3_LIST_H
 
+#include <iostream>
+
+using namespace std;
+
 class List {
     public:
         /* creates an empty list */

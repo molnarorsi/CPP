@@ -68,16 +68,7 @@ void PointSet::sortPointsY() {
 }
 
 void PointSet::sortDistances() {
-    double aux;
-    for (int i = 0; i < distances.size() ; ++i){
-        for (int j = 0; j < distances.size(); ++j){
-            if (distances[i] < distances[j]) {
-                aux = distances[i];
-                distances[i] = distances[j];
-                distances[j] = aux;
-            }
-        }
-    }
+    sort(distances.begin(), distances.end());
 }
 
 int PointSet::numDistinctDistances() {

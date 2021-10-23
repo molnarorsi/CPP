@@ -83,7 +83,7 @@ void Matrix::randomMatrix(int a, int b) {
     srand(time(0));
     for(int i = 0; i < mRows; ++i) {
         for(int j = 0; j < mCols; ++j) {
-            mElements[i][j] = rand() % (b + 1) + a;
+            mElements[i][j] = (rand() % (b -a ) )+ a;
         }
     }
 }
@@ -204,15 +204,15 @@ Matrix &Matrix::operator=(const Matrix &mat) {
 //        }
 }
 
-Matrix &Matrix::operator=(Matrix &&mat) {
-    for (int i = 0; i < mRows; ++i) {
-        delete[] this->mElements[i];
-    }
-    delete[] this->mElements;
-    this->mRows = mat.mRows;
-    this->mCols = mat.mCols;
-    this->mElements = mat.mElements;
-    mat.mElements = nullptr;
-    mat.mRows = 0;
-
-}
+//Matrix &Matrix::operator=(Matrix &&mat) {
+//    for (int i = 0; i < mRows; ++i) {
+//        delete[] this->mElements[i];
+//    }
+//    delete[] this->mElements;
+//    this->mRows = mat.mRows;
+//    this->mCols = mat.mCols;
+//    this->mElements = mat.mElements;
+//    mat.mElements = nullptr;
+//    mat.mRows = 0;
+//
+//}

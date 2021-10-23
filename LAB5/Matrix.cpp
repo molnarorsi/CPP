@@ -71,31 +71,32 @@ void Matrix::fillMatrix(double value) {
 }
 
 void Matrix::randomMatrix(int a, int b) {
-        std::random_device dev;
-        std::mt19937 gen(dev());
-        uniform_real_distribution<> rnd(a, b);
-        for (int i = 0; i < mRows; i++) {
-            for (int j = 0; j < mCols; j++) {
-                mElements[i][j] = rnd(gen);
-            }
-        }
-
-//    srand(time(0));
-//    for(int i = 0; i < mRows; ++i) {
-//        for(int j = 0; j < mCols; ++j) {
-//            mElements[i][j] = rand() % (b + 1) + a;
+//        std::random_device dev;
+//        std::mt19937 gen(dev());
+//        uniform_real_distribution<> rnd(a, b);
+//        for (int i = 0; i < mRows; i++) {
+//            for (int j = 0; j < mCols; j++) {
+//                mElements[i][j] = rnd(gen);
+//            }
 //        }
-//    }
+
+    srand(time(0));
+    for(int i = 0; i < mRows; ++i) {
+        for(int j = 0; j < mCols; ++j) {
+            mElements[i][j] = rand() % (b + 1) + a;
+        }
+    }
 }
 
 void Matrix::printMatrix(ostream &os) const {
     for(int i = 0; i < mRows; ++i) {
         for(int j = 0; j < mCols; ++j) {
-            os << mElements[i][j] << "\n";
+            os << mElements[i][j] << " ";
         }
+        os << endl;
     }
 
-    os << "\n";
+    //os << endl;
 }
 
 bool Matrix::isSquare() const {
@@ -142,22 +143,22 @@ Matrix operator*(const Matrix &x, const Matrix &y) {
 istream &operator>>(istream &is, Matrix &mat) {
     for(int i = 0; i < mat.mRows; ++i) {
         for(int j = 0; j < mat.mCols; ++j) {
-            is >> mat.mElements[0][j];
+            is >> mat.mElements[i][j];
         }
     }
     return is;
 }
 
 ostream &operator<<(ostream &os, const Matrix &mat) {
-    mat.printMatrix(os);
-    return os;
-//    for(int i = 0; i < mat.mRows; ++i) {
-//        for(int j = 0; j < mat.mCols; ++j) {
-//            os << mat.mElements[i][j] << " ";
-//        }
-//        os << "\n";
-//    }
+//    mat.printMatrix(os);
 //    return os;
+    for(int i = 0; i < mat.mRows; ++i) {
+        for(int j = 0; j < mat.mCols; ++j) {
+            os << mat.mElements[i][j] << " ";
+        }
+        os << "\n";
+    }
+    return os;
 }
 
 

@@ -10,6 +10,27 @@ Matrix createSquareMatrix(int size) {
 }
 
 int main(int argc, char** argv) {
+    cout <<"******************************************************************" << endl;
+    cout << "Square matrix" << endl;
+    cout <<"******************************************************************" << endl;
+    cout << createSquareMatrix(3);
+    cout <<"******************************************************************" << endl;
+    cout << "Is it square? -- True" << endl;
+    cout <<"******************************************************************" << endl;
+    Matrix m11(3,3);
+    m11.randomMatrix(1,10);
+    m11.printMatrix();
+    cout << endl;
+    cout << m11.isSquare() << endl;
+    //cout << createSquareMatrix(3).isSquare() << endl;
+    cout <<"******************************************************************" << endl;
+    cout << "Is it square? -- False" << endl;
+    cout <<"******************************************************************" << endl;
+    Matrix m0(3,2);
+    m0.fillMatrix(2);
+    m0.printMatrix();
+    cout << endl;
+    cout << m0.isSquare() << endl;
     cout<<"******************************************************************"<<endl;
     cout<<"Constructor "<<endl;
     cout<<"******************************************************************"<<endl;
@@ -66,7 +87,7 @@ int main(int argc, char** argv) {
     cout<<"Index operator "<<endl;
     cout<<"******************************************************************"<<endl;
 //Index operator
-//    cout << endl << "m4[0][0]: " << m4[0][0] << endl;
+    cout << endl << "m4[0][0]: " << m4[0][0] << endl;
     cout<<"******************************************************************"<<endl;
     cout<<"* operator "<<endl;
     cout<<"******************************************************************"<<endl;
@@ -91,35 +112,35 @@ int main(int argc, char** argv) {
     } catch (out_of_range& e) {
         cout<< e.what() << endl;
     }
-    cout<<"******************************************************************"<<endl;
-    cout<<"MOVE constructor "<<endl;
-    cout<<"******************************************************************"<<endl;
-    Matrix mx(3, 2), my(2, 3);
-    mx.fillMatrix(1);
-    my.fillMatrix(2);
-    cout << "mx: " << endl << mx << endl;
-    cout << "my: " << endl << my << endl;
+//    cout<<"******************************************************************"<<endl;
+//    cout<<"MOVE constructor "<<endl;
+//    cout<<"******************************************************************"<<endl;
+//    Matrix mx(3, 2), my(2, 3);
+//    mx.fillMatrix(1);
+//    my.fillMatrix(2);
+//    cout << "mx: " << endl << mx << endl;
+//    cout << "my: " << endl << my << endl;
 //Move constructor
-    cout << "Matrix mz1 = std::move(mx * my);\n ";
-    Matrix mz1 = std::move(mx * my);
-    mz1.printMatrix(cout);
-    Matrix mz2 = std::move(createSquareMatrix(3));
-    cout << "Matrix mz2 = std::move(createSquareMatrix(3))\n ";
-    mz2.printMatrix(cout);
-    cout<<"******************************************************************"<<endl;
-    cout<<"MOVE assignment "<<endl;
-    cout<<"******************************************************************"<<endl;
-    try {
-        cout<<"mx: "<<mx.getRows()<<" x "<<mx.getCols()<<endl;
-        cout<<mx<<endl;
-        cout<<"my: "<<my.getRows()<<" x "<<my.getCols()<<endl;
-        cout<<my<<endl;
-        cout << "m6 = mx * my: " << endl;
+//    cout << "Matrix mz1 = std::move(mx * my);\n ";
+//    Matrix mz1 = std::move(mx * my);
+//    mz1.printMatrix(cout);
+//    Matrix mz2 = std::move(createSquareMatrix(3));
+//    cout << "Matrix mz2 = std::move(createSquareMatrix(3))\n ";
+//    mz2.printMatrix(cout);
+//    cout<<"******************************************************************"<<endl;
+//    cout<<"MOVE assignment "<<endl;
+//    cout<<"******************************************************************"<<endl;
+//    try {
+//        cout<<"mx: "<<mx.getRows()<<" x "<<mx.getCols()<<endl;
+//        cout<<mx<<endl;
+//        cout<<"my: "<<my.getRows()<<" x "<<my.getCols()<<endl;
+//        cout<<my<<endl;
+//        cout << "m6 = mx * my: " << endl;
 //        m6 = mx * my;
-        cout<<"m6: "<<m6.getRows()<<" x "<<m6.getCols()<<endl;
-        cout<<m6<<endl;
-    } catch (out_of_range& e) {
-        cout << e.what() << endl;
-    }
+//        cout<<"m6: "<<m6.getRows()<<" x "<<m6.getCols()<<endl;
+//        cout<<m6<<endl;
+//    } catch (out_of_range& e) {
+//        cout << e.what() << endl;
+//    }
     return 0;
 }

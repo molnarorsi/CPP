@@ -54,6 +54,18 @@ Matrix::Matrix(const Matrix &what) {
 //    }
 //}
 
+Matrix::Matrix(Matrix &&what) {
+    this->mRows = what.mRows;
+    this->mCols = what.mCols;
+    this->mElements = what.mElements;
+
+    what.mRows = 0;
+    what.mCols = 0;
+    what.mElements = nullptr;
+}
+
+
+
 Matrix::~Matrix() {
     for(int i = 0; i < mRows; ++i) {
         delete[] mElements[i];
@@ -163,17 +175,17 @@ ostream &operator<<(ostream &os, const Matrix &mat) {
 
 
 double *Matrix::operator[](int index) {
-//    if(index < 0 || index >= mRows) {
-//        throw runtime_error("Not existing index!");
-//    }
+    if(index < 0 || index >= mRows) {
+        throw runtime_error("Not existing index!");
+    }
     return mElements[index];
 }
 
 
 double *Matrix::operator[](int index) const {
-//    if(index < 0 || index >= mRows) {
-//        throw runtime_error("Not existing index!");
-//    }
+    if(index < 0 || index >= mRows) {
+        throw runtime_error("Not existing index!");
+    }
     return mElements[index];
 }
 
@@ -204,15 +216,16 @@ Matrix &Matrix::operator=(const Matrix &mat) {
 //        }
 }
 
-//Matrix &Matrix::operator=(Matrix &&mat) {
-//    for (int i = 0; i < mRows; ++i) {
-//        delete[] this->mElements[i];
-//    }
-//    delete[] this->mElements;
-//    this->mRows = mat.mRows;
-//    this->mCols = mat.mCols;
-//    this->mElements = mat.mElements;
-//    mat.mElements = nullptr;
-//    mat.mRows = 0;
-//
-//}
+
+Matrix &Matrix::operator=(Matrix &&mat) {
+    for (int i = 0; i < mRows; ++i) {
+        delete[] this->mElements[i];
+    }
+    delete[] this->mElements;
+    this->mRows = mat.mRows;
+    this->mCols = mat.mCols;
+    this->mElements = mat.mElements;
+    mat.mElements = nullptr;
+    mat.mRows = 0;
+
+}

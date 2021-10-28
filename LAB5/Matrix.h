@@ -17,7 +17,7 @@ class Matrix {
         // Copy constructor
         Matrix(const Matrix& what);
         // Move constructor
-        //Matrix( Matrix&& what );
+        Matrix( Matrix&& what );
         // Destructor
         ~Matrix();
         //fills the matrix with identical elements

@@ -4,9 +4,16 @@
 using namespace std;
 int main() {
 
+    PointSet pset1(10);
+    cout<<"#points: " <<Point::getCounter()<<endl;
+    PointSet pset2(20);
+    cout<<"#points: " <<Point::getCounter()<<endl;
+
+    cout << "\n";
+
     PointSet set1(5);
+    cout <<"Distances: \n";
     set1.printDistances();
-    cout << endl;
     cout << "Maximum distance: " << set1.maxDistance();
     cout << endl;
     cout << "Minimum distance: " << set1.minDistance();

@@ -13,12 +13,13 @@ class Polynomial {
     // Polinom együtthatói
         double *coefficients;
     // Polinom együtthatóinak a száma
-        int capacity;
+        int capacity;    //size
     public:
         Polynomial(int degree, const double coefficients[]);
         Polynomial(const Polynomial &that);
         Polynomial(Polynomial &&that);
         ~Polynomial();
+        //Polynomial readPolynomial();
         // Polinom fokszáma
             int degree() const;
         // Polinom értéke a megadott pontban

@@ -109,34 +109,28 @@ Polynomial operator +(const Polynomial &a, const Polynomial &b) {
 //        sum.coefficients[i] = a[i] + b[i];
 //    }
 //    return sum;
-    int newCapacity = max(a.capacity,b.capacity);
-    Polynomial sum(newCapacity, nullptr);
-
-    for(int i = 0; i <= newCapacity; i++) {
-        if( i <= a.capacity) {
-            sum.coefficients[i] = a.coefficients[i] + b.coefficients[i];
+    if(a.capacity > b.capacity) {
+        Polynomial sum(a);
+        for(int i = 0; i < b.capacity; i++) {
+            sum.coefficients[sum.capacity - i] += b.coefficients[b.capacity - i];
         }
-        else if( i <= a.capacity) {
-            sum.coefficients[i] = a.coefficients[i];
-        }
-        else {
-            sum.coefficients[i] = b.coefficients[i];
-        }
+        return sum;
     }
-
+    Polynomial sum(b);
+    for (int i = 0; i < a.capacity; i++) {
+        sum.coefficients[sum.capacity - i] += a.coefficients[a.capacity - i];
+    }
     return sum;
+
 }
 
 Polynomial operator-(const Polynomial &a, const Polynomial &b) {
-    Polynomial difference(a.degree() + 1, nullptr);
-    if(a.degree() > b.degree()) {
-        difference.capacity = a.degree() + 1;
+    if(a.capacity >= b.capacity) {
+        Polynomial difference(a);
+        return difference + (-b);
     }
-
-    for(int i = 0; i <= a.capacity; i++) {
-        difference.coefficients[i] -= a.coefficients[i];
-    }
-    return difference;
+    Polynomial difference(-b);
+    return difference + a;
 }
 
 Polynomial operator*(const Polynomial &a, const Polynomial &b) {
@@ -156,3 +150,18 @@ Polynomial operator*(const Polynomial &a, const Polynomial &b) {
 
     return product;
 }
+
+//Polynomial operator*(const Polynomial &a, const Polynomial &b) {
+//    int aDeg = a.degree();
+//    int bDeg = b.degree();
+//    Polynomial result(aDeg + bDeg, nullptr);
+//    for (int i = 0; i < result.capacity; i++) {
+//        result.coefficients[i] = 0;
+//    }
+//    for (int i = 0; i <= aDeg; i++) {
+//        for (int j = 0; j <= bDeg; j++) {
+//            result.coefficients[i + j] = a[i] * b[j];
+//        }
+//    }
+//    return result;
+//}

@@ -8,7 +8,8 @@ int Account::counter{0};
 
 Account::Account(double balance) {
     this->balance = balance;
-    ++counter;
+    this->id = ++counter;
+    //++counter;
 }
 
 void Account::deposit(double amount) {
@@ -19,6 +20,7 @@ void Account::deposit(double amount) {
 
 bool Account::withdraw(double amount) {
     if( amount > balance ) {
+        cout << "You can't withdraw " << amount << " RON. Please try again!" << endl;
         return false;
     }
     balance -= amount;
@@ -38,22 +40,15 @@ double Account::getBalance() const {
 }
 
 void Account::print(ostream &os) const {
-    if(this->balance == 0) {
-        os << "Not enough funds! Transition not succeed!";
-    }
-    os << "Account's ID is: " << this->id << endl;
-    os << "Account's balance is: " << "{ " << this->getBalance() << " } RON" << endl;
-//    os << "Account's ID is: "<< getId() << endl;
-//    os << "Account's balance is: " << "{ " << getBalance() << " } RON" << endl;
+//    os <<  "Account's ID is: " << this->id << endl;
+//    os << "Account's balance is: " << this->balance << " RON" << endl;
+    os << "Account ID is: " << this->id << "; current balance: " << this->balance << " RON" << endl;
+
+
 }
 
 ostream &operator<<(ostream &os, const Account &account) {
-    if(account.balance == 0) {
-        throw runtime_error("Account has no funds!");
-    }
-    os << "Account's ID is: " << account.getId() << endl;
-    os << "Account's balance is: " << "{ " << account.getBalance() << " } RON" << endl;
-
+    account.print(os);
     return os;
 }
 

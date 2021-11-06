@@ -21,9 +21,9 @@ bool Bank::deleteCustomer(int id) {
 }
 
 Customer &Bank::getCustomer(int id) {
-    for(Customer customer : customers) {
-        if(customer.getId() == id) {
-            return customer;
+    for(int i = 0; i < customers.size(); i++) {
+        if(customers[i].getId() == id) {
+            return customers[i];
         }
     }
     throw runtime_error("This customer doesn't exist!");
@@ -45,10 +45,21 @@ void Bank::printCustomersAndAccounts(ostream &os) const {
 }
 
 vector<int> Bank::loadCustomers(const string &filename) {
-    auto ss = istringstream{};
-    ifstream f(filename);
-    if(!f.is_open()) {
-        throw runtime_error("Couldn't open file!");
+    vector <string> lines;
+    string line;
+
+    ifstream input(filename);
+    if(!input.is_open()) {
+        cerr << "Couldn't open file!" << filename << endl;
+        exit(0);
     }
-    ss >> f.rdbuf();
+    while(getline(input, line)) {
+        lines.push_back(line);
+    }
+
+    for(const auto &i : lines) {
+        cout << i << endl;
+    }
+
+    input.close();
 }

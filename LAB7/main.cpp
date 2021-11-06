@@ -52,12 +52,12 @@ int main() {
     customer1.deleteAccount(4);
     customer2.deleteAccount(8);
     cout << customer1 << customer2;
-    //EXCEPTION HANDLING
-    try {
-        cout << customer1.getAccount(7);
-    } catch (runtime_error &e) {
-        cout << e.what() << endl;
-    }
+//    //EXCEPTION HANDLING
+//    try {
+//        cout << customer1.getAccount(7);
+//    } catch (runtime_error &e) {
+//        cout << e.what() << endl;
+//    }
     cout << endl;
     //INDEX OPERATOR
     cout << customer1[2];
@@ -68,14 +68,19 @@ int main() {
     } catch (runtime_error &e) {
         cout << e.what() << endl;
     }
-//    cout << endl;
-//    cout << "**********************************************************************************" << endl;
-//    cout << "BANK CLASS" << endl;
-//    cout << "**********************************************************************************" << endl;
-//    cout << endl;
-//    Bank bank1("CEC");
-//    Bank bank2("BT");
-//    vector<int> customer = bank1.loadCustomers("customers.txt");
-//    bank1.printCustomers(cout);
+    cout << endl;
+    cout << "**********************************************************************************" << endl;
+    cout << "BANK CLASS" << endl;
+    cout << "**********************************************************************************" << endl;
+    cout << endl;
+    Bank bank1("CEC");
+    vector<int> customersList = bank1.loadCustomers("customers.txt");
+    bank1.printCustomers(cout);
+    for(int & customerList : customersList) {
+        bank1.getCustomer(customerList).newAccount(600);
+        bank1.getCustomer(customerList).newAccount(2700);
+    }
+    bank1.getCustomer(2).getAccount(6).deposit(40);
+    bank1.printCustomersAndAccounts(cout);
 
 }

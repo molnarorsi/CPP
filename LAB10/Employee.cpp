@@ -12,11 +12,10 @@ Employee::Employee(const string &lastName, const string &firstName, const int bi
 }
 
 void Employee::print(ostream &out) const {
-    out << "EMPLOYEE'S DATA: " << endl;
-    out << "\t";
-    Person::print(out);
-    out << "\tOccupation: " << this->occupation << endl;
-    out<< "\tID: " << this->id << endl;
+    out << "DATA OF EMPLOYEE WITH ID: " << this->id << endl;
+    out << "\t" << "Employee name: " << this->lastName << " " << this->firstName
+        << "\t\t" << "Birth year: " << this->birthYear
+        << "\t\t" << "Occupation: " << this->occupation << endl;
 }
 
 int Employee::getId() const {

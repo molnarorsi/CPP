@@ -16,7 +16,7 @@ protected:
 
 public:
     Employee(const string &lastName, const string &firstName, const int birthYear, const string &occupation);
-    void print(ostream &out = cout) const;
+    virtual void print(ostream &out = cout) const;
     int getId() const;
 };
 

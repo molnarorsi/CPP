@@ -95,6 +95,9 @@ int main() {
     cout << "List of managers: " << endl;
     company1.printManagers(cout);
 
-    company1.fireFromManager(6);
-    company1.printManagers(cout);
+    cout << "Adding employee with ID 7 to manager2, then removing employee7 from manager3:" << endl;
+    company1.hireForManager(manager2, &employee7);
+    company1.fireFromManager(manager3, 7);
+    company1.printEmployees(cout);
+
 }

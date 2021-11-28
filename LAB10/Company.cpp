@@ -18,30 +18,12 @@ void Company::fire(int ID) {
     }));
 }
 
-void Company::hireForManager(int ID) {
-    for(Employee* employee : employees) {
-        if(dynamic_cast<Manager*>(employee)) {
-            hire(employee);
-        }
-    }
+void Company::hireForManager(Manager manager, Employee* employee) {
+    manager.addEmployee(employee);
 }
 
-void Company::fireFromManager(int ID) {
-    for(Employee* employee : employees) {
-        if(dynamic_cast<Manager*>(employee)) {
-            employees.erase(remove_if(employees.begin(), employees.end(), [ID](Employee* employee) {
-                return employee->getId() == ID;
-            }));
-        }
-    }
-}
-
-const string &Company::getName() const {
-    return name;
-}
-
-void Company::setName(const string &name) {
-    Company::name = name;
+void Company::fireFromManager(Manager manager, int employeeID) {
+    manager.deleteEmployee(employeeID);
 }
 
 void Company::printManagers(ostream &out) const {

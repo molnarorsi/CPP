@@ -18,7 +18,7 @@ void Manager::addEmployee(Employee* employee) {
 void Manager::deleteEmployee(int ID) {
     employees.erase(remove_if(employees.begin(), employees.end(), [ID](Employee* employee) {
         return employee->getId() == ID;
-    }));
+    }), employees.end());
 }
 
 int Manager::numberOfEmployees() const {

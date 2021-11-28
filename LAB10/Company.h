@@ -20,14 +20,10 @@ public:
     Company(string name);
     void hire(Employee* employee);
     void fire(int ID);
-    void hireForManager(int ID);
-    void fireFromManager(int ID);
+    void hireForManager(Manager manager, Employee *employee);
+    void fireFromManager(Manager manager,  int employeeID);
     virtual void printEmployees(ostream &out = cout) const;
     virtual void printManagers(ostream &out = cout) const;
-
-    const string &getName() const;
-
-    void setName(const string &name);
 
 private:
     string name;

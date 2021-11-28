@@ -22,13 +22,14 @@ private:
     static int studentCounter;
 
 public:
-    Student(int ID, string& lastName, string& firstName);
+    Student(int ID, const string& lastName, const string& firstName);
     int getId() const;
     const string &getLastName() const;
     const string &getFirstName() const;
     double getAverage() const;
-    void addGrade(string subject[], double grade);
+    void addGrade(const string& subject, double grade);
     const map<string, double> &getGrades() const;
+    double getGrade(string& subject) const;
     void computeAverage();
     friend ostream& operator<<(ostream& out, Student& student);
 };

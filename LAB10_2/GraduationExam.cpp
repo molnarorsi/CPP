@@ -9,23 +9,44 @@ int GraduationExam::numStudents() const {
     students.size();
 }
 
-void GraduationExam::enrollment(const string &filename) {
-    vector<string> lines;
+void GraduationExam::enrollment(const string &fileName) {
+//    vector<string> lines;
+//    string line;
+//
+//    ifstream input_file(fileName);
+//    if(!input_file.is_open()) {
+//        cerr << "Couldn't open file " << fileName << "!" << endl;
+//    }
+//
+//    while(getline(input_file, line)) {
+//        lines.push_back(line);
+//    }
+//
+//    for(const auto &i : lines) {
+//        cout << i << endl;
+//    }
+//
+//    input_file.close();
+    ifstream input_file(fileName);
+    if( !input_file.is_open() ) {
+        cerr << "Couldn't open file " << fileName << "!" << endl;
+    }
+
     string line;
 
-    ifstream input_file(filename);
-    if(!input_file.is_open()) {
-        cerr << "Couldn't open file " << filename << "!" << endl;
-    }
-
     while(getline(input_file, line)) {
-        lines.push_back(line);
+        if(line.length() != 0) {
+            istringstream ss(line);
+            int id;
+            string firstName, lastName;
+            getline()
+        }
     }
-
-    for(const auto &i : lines) {
-        cout << i << endl;
-    }
-
-    input_file.close();
 }
 
+void GraduationExam::computeFinalGrades() {
+    for(auto it = students.begin(); it != students.end(); it++) {
+        it->second.computeAverage();
+
+    }
+}

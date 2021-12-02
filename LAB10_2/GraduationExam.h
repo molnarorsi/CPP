@@ -13,9 +13,9 @@ private:
     map<int, Student> students;
 
 public:
-    void enrollment(const string& filename);
+    void enrollment(const string& fileName);
     int numStudents() const;
-    void readGradesOfSubjects(string&, string&);
+    void readGradesOfSubjects(const string& subject, const string& filename);
     void computeFinalGrades();
     map<string, double> getGrades(int) const;
     int numPassed() const;

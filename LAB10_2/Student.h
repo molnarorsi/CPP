@@ -19,7 +19,7 @@ private:
     string firstName;
     map<string, double> grades;
     double average;
-    static int studentCounter;
+   // static int studentCounter;
 
 public:
     Student(int ID, const string& lastName, const string& firstName);

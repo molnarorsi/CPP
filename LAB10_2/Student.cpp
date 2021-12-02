@@ -6,7 +6,7 @@
 
 #include <iomanip>
 
-static int studentCounter = {0};
+// static int studentCounter = {0};
 
 int Student::getId() const {
     return ID;

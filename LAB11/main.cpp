@@ -2,7 +2,7 @@
 #include "functions.h"
 
 int main() {
-    readFile("bible.txt");
-    print();
+    map<string, set<int>> indexes = readFile("indexes.txt");
+    print(cout, indexes);
     return 0;
 }

@@ -2,39 +2,71 @@
 // Created by Orsolya on 02.12.2021.
 //
 
-#include <cstring>
+#include <algorithm>
+#include <sstream>
 #include "functions.h"
+using namespace std;
 
-void readFile(const string& fileName) {
-    string word;
+map < string, set<int> > readFile(const string& fileName) {
     ifstream input_file(fileName);
-    map<string, int> frequency;
     if( !input_file.is_open() ) {
         cerr << "Couldn't open file " << fileName << "!" << endl;
     }
 
-    while(getline(input_file, word)) {
-        if( frequency.count(word) > 0 ) {
-            frequency.insert(pair<string, int>(word, frequency[word]++));
+    map< string, set< int > > index;
+    set< int > set;
+
+    string line;
+
+    while( getline(input_file, line) ) {
+        if( line.length() == 0 ) {
+            break;
         }
-        else {
-            frequency.insert(pair<string, int>(word,1));
-        }
+        for_each( line.begin(), line.end(), [] (char& c) {
+            c = ::toupper( c );
+        } );
+        index.emplace( line, set );
     }
+
+    int counter = 1;
+
+    while( getline(input_file, line) ) {
+        replace_if( line.begin(), line.end(), [] (char c) {
+            return !isalpha( c );
+        }, ' ');
+
+        for_each( line.begin(), line.end(), [] (char& c) {
+            c = ::toupper( c );
+        } );
+
+        istringstream ss( line );
+
+        string words;
+
+        while( ss >> words ) {
+            for( auto& it : index ) {
+                if( it.first == words ) {
+                    index[it.first].insert(counter);
+                }
+            }
+        }
+
+        counter++;
+    }
+
     input_file.close();
+    return index;
 }
 
-void print() {
-    map<string,int>::iterator it;
-    map<string, int> frequency;
-    for(it = frequency.begin(); it != frequency.end(); it++) {
-        cout << it->first << ": " << it->second;
-    }
-}
+void print(ostream &out, map < string, set<int> > &words) {
+    for (auto i = words.begin(); i != words.end() ; ++i) {
+        out << i->first << " ";
 
-void splitWords(char str[]) {
-    char *token = strtok(str, " ");
-    while(token != NULL) {
-        token = strtok(NULL, " ");
+        set<int> st = i->second;
+
+        for (auto &j : st) {
+            out << " " << j;
+        }
+        out << endl;
     }
 }

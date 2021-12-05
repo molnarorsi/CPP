@@ -9,11 +9,13 @@
 #include <string>
 #include <fstream>
 #include <map>
+#include <set>
 #include <iterator>
+#include <cstring>
+#include <algorithm>
 using namespace std;
 
-void readFile(const string& fileName);
-void splitWords();
-void print();
+map < string, set<int> > readFile(const string& fileName);
+void print(ostream &out, map < string, set<int> > &words);
 
 #endif //LAB11_FUNCTIONS_H

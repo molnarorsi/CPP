@@ -13,9 +13,19 @@ int main() {
     student1.addGrade("Mathematics", 9.75);
     student1.addGrade("Informatics", 7);
     student1.computeAverage();
-    cout << student1;
+
+    Student student2(2, "Henning", "Arthur");
+    student2.addGrade("Romanian", 10);
+    student2.addGrade("Hungarian", 9.50);
+    student2.addGrade("Mathematics", 10);
+    student2.addGrade("Informatics", 10);
+    student2.computeAverage();
+    cout << student1 << endl;
+    cout << student2;
 
     GraduationExam exam;
     exam.enrollment("names.txt");
+
+
     return 0;
 }
